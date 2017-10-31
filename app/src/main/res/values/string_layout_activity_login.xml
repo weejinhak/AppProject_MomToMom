@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textView_GoogleLogin_Text">구글 로그인</string>
+    <string name="button_LoginOkButton_Text">확인</string>
+    <string name="button_JoinButton_Text">회원가입 하기</string>
+    <string name="editText_email_Text">email</string>
+    <string name="editText_password_Text">password</string>
+</resources>
