@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">MomToMom</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+
+
+    <!--select 레이아웃-->
+    <string name="myInfo_go_text">나의 맘투맘 가기</string>
+    <string name="find_feedingRoom_text">수유실 찾기</string>
+    <string name="find_guideBook_text">가이드북</string>
+
+    <!--login 레이아웃 및 join 레이아웃-->
+    <string name="textView_GoogleLogin_Text">구글 로그인</string>
+    <string name="button_LoginOkButton_Text">확인</string>
+    <string name="button_JoinButton_Text">회원가입 하기</string>
+    <string name="editText_email_Text">email</string>
+    <string name="editText_password_Text">password</string>
+    <string name="textView_emainJoin">이메일로 회원가입하기</string>
+    <string name="title_activity_maps">Map</string>
+
 </resources>

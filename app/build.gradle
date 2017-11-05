@@ -32,6 +32,10 @@ dependencies {
     /*googleFirebase-auth*/
     compile 'com.google.firebase:firebase-auth:11.2.0'
     compile 'com.google.android.gms:play-services-auth:11.2.0'
+    compile 'com.google.firebase:firebase-database:11.2.0'
+    //googleMap
+    compile 'com.google.android.gms:play-services-maps:11.2.0'
+
 
 }
 allprojects {

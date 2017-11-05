@@ -33,84 +33,87 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="383dp" />
+        app:layout_constraintGuide_begin="407dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="447dp" />
+        app:layout_constraintGuide_begin="479dp" />
     <!--end GuideLine-->
 
+
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/select_layout_logo_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:srcCompat="@drawable/login_layout_logo_img" />
 
-    <EditText
-        android:id="@+id/login_layout_editText_email"
+    <ImageButton
+        android:id="@+id/select_layout_findFeedingRoom_imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/editText_email_Text"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/login_layout_editText_password"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        android:background="#EB6A6A"
+        app:layout_constraintEnd_toStartOf="@+id/select_layout_guide_imgButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/select_layout_baby_bottle_img" />
 
-    <EditText
-        android:id="@+id/login_layout_editText_password"
+    <ImageButton
+        android:id="@+id/select_layout_guide_imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/editText_password_Text"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_layout_editText_email" />
+        android:background="#EB6A6A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/select_layout_findFeedingRoom_imgButton"
+        app:layout_constraintTop_toTopOf="@+id/select_layout_findFeedingRoom_imgButton"
+        app:srcCompat="@drawable/select_layout_guide_book_img" />
 
     <Button
-        android:id="@+id/login_layout_loginOk_button"
-        android:layout_width="match_parent"
+        android:id="@+id/select_layout_myInfo_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/myInfo_go_text"
         android:background="#B34141"
-        android:text="@string/button_LoginOkButton_Text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-    <Button
-        android:id="@+id/login_layout_join_button"
+    <TextView
+        android:id="@+id/select_layout_textView_find_feeding_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#B34141"
-        android:text="@string/button_JoinButton_Text"
+        android:text="@string/find_feedingRoom_text"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/login_layout_googleLogin_button"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toBottomOf="@+id/select_layout_findFeedingRoom_imgButton" />
 
-    <Button
-        android:id="@+id/login_layout_googleLogin_button"
+    <TextView
+        android:id="@+id/select_layout_textView_find_guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#B34141"
-        android:text="@string/textView_GoogleLogin_Text"
+        android:text="@string/find_guideBook_text"
         android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/login_layout_join_button"
-        app:layout_constraintTop_toTopOf="@+id/login_layout_join_button" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/select_layout_guide_imgButton" />
 
-
+    <Button
+        android:id="@+id/select_layout_logout_temporary_button_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃(임시)"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>
