@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         mAuth = FirebaseAuth.getInstance();
 
         //button & text
-        Button login_layout_joinButton = findViewById(R.id.login_layout_join_button);
+        TextView login_layout_joinButton = findViewById(R.id.login_layout_join_button);
         Button loginOkButton = findViewById(R.id.login_layout_loginOk_button);
         Button googleLoginButton = findViewById(R.id.login_layout_googleLogin_button);
         login_EditTextEmail=findViewById(R.id.login_layout_editText_email);
