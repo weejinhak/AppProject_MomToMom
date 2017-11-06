@@ -4,33 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EB6A6A">
+    android:background="#FFFFFF"
+    tools:layout_editor_absoluteY="81dp">
 
 
-    <TextView
+    <ImageView
+        android:id="@+id/userinfo_layout_userPhoto_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_text_nickName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:srcCompat="@drawable/login_layout_logo_img" />
+
+
+    <EditText
         android:id="@+id/userinfo_layout_text_nickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/textView_emainJoin"
-        android:textColor="#FFFFFF"
+        android:hint="@string/userNickName"
+        android:inputType="text"
+        android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_userPhoto_add" />
+
+
+    <TextView
+        android:id="@+id/userinfo_layout_basicInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/basicInfo"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/userinfo_layout_text_name"
+        tools:layout_editor_absoluteY="230dp" />
 
     <EditText
         android:id="@+id/userinfo_layout_text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="15"
-        android:gravity="center"
-        android:hint="@string/editText_email_Text"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="@string/essentialName"
         android:inputType="textEmailAddress"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_text_age"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
@@ -38,10 +62,11 @@
         android:id="@+id/userinfo_layout_text_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="15"
-        android:gravity="center"
-        android:hint="@string/editText_password_Text"
-        android:inputType="textPassword"
+        android:ems="10"
+        android:gravity="left"
+        android:hint="@string/essentialAge"
+        android:inputType="text"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="@+id/userinfo_layout_text_name"
         app:layout_constraintStart_toStartOf="@+id/userinfo_layout_text_name"
@@ -51,8 +76,10 @@
         android:id="@+id/userinfo_layout_Button_infoOk_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#B34141"
-        android:text="@string/join_text"
+        android:layout_margin="40dp"
+        android:layout_marginBottom="48dp"
+        android:background="#EB6A6A"
+        android:text="@string/basicInfoOk"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,19 +122,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="546dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_text_nickName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:srcCompat="@drawable/login_layout_logo_img" />
 
     <!--GuideEnd-->
 

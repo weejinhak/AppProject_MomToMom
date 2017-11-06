@@ -19,6 +19,7 @@ public class SelectActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
+    private UserInfoDto userInfoDto;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,12 +29,12 @@ public class SelectActivity extends AppCompatActivity {
         //FireBase auth&database
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        //Dto
-        UserInfoDto userInfoDto = new UserInfoDto();
-        userInfoDto.email=auth.getCurrentUser().getEmail();
         //button
         Button logout_button = findViewById(R.id.select_layout_logout_temporary_button_);
         ImageButton findFeedingRoomButton = findViewById(R.id.select_layout_findFeedingRoom_imgButton);
+        //intent_get
+        Intent intent =getIntent();
+        userInfoDto= (UserInfoDto) intent.getSerializableExtra("userInfo");
 
         //firebase_get
         String uid=auth.getCurrentUser().getUid();

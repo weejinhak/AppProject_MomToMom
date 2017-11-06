@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="userNickName">닉네임 입력</string>
+        <string name="basicInfo">기본정보</string>
+        <string name="essentialName">이름</string>
+        <string name="essentialAge">나이</string>
+        <string name="basicInfoOk">완료</string>
+</resources>

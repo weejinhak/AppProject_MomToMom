@@ -8,15 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by wee on 2017. 11. 3..
@@ -39,12 +36,12 @@ public class EmailJoinActivity extends AppCompatActivity {
         //firebase
         mAuth = FirebaseAuth.getInstance();
 
-        join_editTextEmail=findViewById(R.id.join_layout_text_email);
-        join_editTextPassword=findViewById(R.id.join_layout_text_password);
+        join_editTextEmail=findViewById(R.id.userinfo_layout_text_name);
+        join_editTextPassword=findViewById(R.id.userinfo_layout_text_age);
 
 
 
-        Button joinOkButton=findViewById(R.id.join_layout_imageButton_joinOk_button);
+        Button joinOkButton=findViewById(R.id.userinfo_layout_Button_infoOk_button);
 
         joinOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +63,7 @@ public class EmailJoinActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(EmailJoinActivity.this,"회원가입성공",Toast.LENGTH_SHORT).show();
-                            Intent intent= new Intent(getApplicationContext(),LoginActivity.class);
+                            Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
                             startActivity(intent);
                             finish();
                         }

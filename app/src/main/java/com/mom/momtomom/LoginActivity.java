@@ -163,7 +163,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                         } else {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(LoginActivity.this, "로그인이성공!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "인증성공!!", Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 });
