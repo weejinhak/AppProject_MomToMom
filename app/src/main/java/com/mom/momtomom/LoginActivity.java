@@ -86,11 +86,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user !=null) {
+                if(user !=null) {//인증 user 라면 메인페이지로 이동
                     Intent intent= new Intent(getApplicationContext(),SelectActivity.class);
                     startActivity(intent);
                     finish();
-                }else{
+                }else{//비인증 user 라면 정보 입력 페이지로 이동
+                    Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         };
@@ -160,14 +163,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "로그인실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "인증실패", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(LoginActivity.this, "인증성공!!", Toast.LENGTH_SHORT).show();
-                            Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
-                            startActivity(intent);
-                            finish();
                         }
                     }
                 });
