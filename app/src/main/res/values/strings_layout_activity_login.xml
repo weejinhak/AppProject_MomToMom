@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="join_text">회원가입</string>
+    <string name="password_search_text">비밀번호 찾기</string>
+    <string name="id_search_text">아이디 찾기</string>
+    <string name="textView_GoogleLogin_Text">구글 로그인</string>
+    <string name="textView_FaceBookLogin_Text">페이스북 로그인</string>
+    <string name="button_LoginOkButton_Text">로그인</string>
+    <string name="button_JoinButton_Text">회원가입 하기</string>
+    <string name="textView_emainJoin">이메일로 회원가입하기</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="login_layout_login_info">터치한번으로 간편 로그인</string>
+    <string name="login_mtoLogin_Text">맘투맘 아이디로 로그인</string>
+</resources>

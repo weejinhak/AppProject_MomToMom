@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <!--start GuideLine-->
-
-    <!--end GuideLine-->
-
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -30,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/join_edittext_border"
         android:ems="10"
-        android:hint="아이디를 입력하세요."
+        android:hint="@string/email_input_text"
         android:inputType="textEmailAddress"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -46,7 +42,7 @@
         android:layout_marginTop="7dp"
         android:background="@drawable/join_edittext_border"
         android:ems="10"
-        android:hint="비밀번호를 입력하세요."
+        android:hint="@string/password_input_text"
         android:inputType="textPassword"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/login_layout_editText_email"
@@ -61,7 +57,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="33dp"
         android:background="@drawable/mtm_button"
-        android:text="로그인"
+        android:text="@string/button_LoginOkButton_Text"
         android:textColor="#FFFFFF"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -91,16 +87,17 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="터치 한 번으로 간편 로그인!"
+        android:text="@string/login_layout_login_info"
         android:textSize="10sp"
         tools:layout_editor_absoluteY="24dp"
-        tools:layout_editor_absoluteX="149dp" />
+        tools:layout_editor_absoluteX="149dp"
+        tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="맘투맘 ID로 로그인"
+        android:text="@string/login_mtoLogin_Text"
         app:layout_constraintTop_toTopOf="@+id/view"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="8dp"
@@ -114,7 +111,7 @@
         android:id="@+id/login_layout_join_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회원가입"
+        android:text="@string/button_JoinButton_Text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/divider2"
         app:layout_constraintTop_toTopOf="@+id/divider2"
@@ -152,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:text="아이디 찾기"
+        android:text="@string/id_search_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/divider1"
         app:layout_constraintTop_toBottomOf="@+id/login_layout_editText_password" />
@@ -163,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:layout_marginTop="0dp"
-        android:text="비밀번호 찾기"
+        android:text="@string/password_search_text"
         app:layout_constraintBottom_toBottomOf="@+id/divider1"
         app:layout_constraintLeft_toRightOf="@+id/divider1"
         app:layout_constraintRight_toLeftOf="@+id/divider2"
@@ -177,7 +174,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="8dp"
         android:background="#375D96"
-        android:text="페이스북으로 로그인"
+        android:text="@string/textView_FaceBookLogin_Text"
         android:textColor="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

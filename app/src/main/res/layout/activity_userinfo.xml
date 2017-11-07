@@ -15,9 +15,9 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="13dp"
-        android:hint="닉네임"
+        android:hint="@string/userNickName"
         android:inputType="text"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +29,7 @@
         android:id="@+id/userinfo_layout_basicInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="기본 정보"
+        android:text="@string/basicInfo"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/userinfo_layout_text_name"
         tools:layout_editor_absoluteX="90dp"
@@ -42,25 +42,23 @@
         android:layout_height="wrap_content"
         android:background="@drawable/join_edittext_border"
         android:ems="10"
-        android:gravity="left"
-        android:hint="이름(필수)"
+        android:hint="@string/essentialName"
         android:inputType="textEmailAddress"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="274dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/userinfo_layout_basicInfo" />
 
     <EditText
         android:id="@+id/userinfo_layout_text_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="-4dp"
+        android:layout_marginStart="-4dp"
         android:background="@drawable/join_edittext_border"
         android:ems="10"
-        android:gravity="left"
-        android:hint="나이(선택)"
+        android:hint="@string/essentialAge"
         android:inputType="text"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/userinfo_layout_text_name"
@@ -96,11 +94,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="parent" />
-
-
-    <!--Guideline start-->
-
-    <!--GuideEnd-->
 
 
 </android.support.constraint.ConstraintLayout>

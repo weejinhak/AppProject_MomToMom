@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     android:background="#EB6A6A">
 
-    <!--start GuideLine-->
-
-    <!--end GuideLine-->
 
 
     <ImageView
