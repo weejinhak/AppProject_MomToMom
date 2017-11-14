@@ -49,6 +49,19 @@ public class EmailJoinActivity extends AppCompatActivity {
         joinOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Validation Check
+                if (join_editTextEmail.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "이메일을 입력하세요!", Toast.LENGTH_SHORT).show();
+                    join_editTextEmail.requestFocus();
+                    return;
+                }
+                if (join_editTextPassword.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "비밀번호를 입력하세요!", Toast.LENGTH_SHORT).show();
+                    join_editTextPassword.requestFocus();
+                    return;
+                }
+
                 createUser(join_editTextEmail.getText().toString(),join_editTextPassword.getText().toString());
             }
         });
