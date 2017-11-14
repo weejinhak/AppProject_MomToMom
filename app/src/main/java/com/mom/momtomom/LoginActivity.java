@@ -73,6 +73,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
         DatabaseReference databaseReference = mDatabase.getReference();
+        System.out.println(databaseReference);
+
+        System.out.println(uidList.size());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     login_EditTextPassword.requestFocus();
                     return;
                 }
-                
+
                 loginUser(login_EditTextEmail.getText().toString(), login_EditTextPassword.getText().toString());
             }
         });
