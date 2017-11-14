@@ -67,6 +67,7 @@ public class EmailJoinActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(EmailJoinActivity.this,"회원가입성공",Toast.LENGTH_SHORT).show();
                             Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
+                            intent.putExtra("userEmail",join_editTextEmail.getText().toString());
                             startActivity(intent);
                             finish();
                         }

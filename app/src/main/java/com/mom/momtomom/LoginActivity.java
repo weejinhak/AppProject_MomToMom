@@ -30,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 /**
  * Created by wee on 2017. 10. 31..
  */
@@ -45,6 +47,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private EditText login_EditTextEmail;
     private EditText login_EditTextPassword;
 
+    private FirebaseDatabase mDatabase;
+
+    private ArrayList<String> uidList;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,14 +59,38 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         //firebase
         mAuth = FirebaseAuth.getInstance();
+        mDatabase=FirebaseDatabase.getInstance();
+
+        //객체 생성
+        uidList = new ArrayList<>();
 
         //button & text
         TextView login_layout_joinButton = findViewById(R.id.login_layout_join_button);
         Button loginOkButton = findViewById(R.id.login_layout_loginOk_button);
         Button googleLoginButton = findViewById(R.id.login_layout_googleLogin_button);
-        login_EditTextEmail=findViewById(R.id.login_layout_editText_email);
-        login_EditTextPassword=findViewById(R.id.login_layout_editText_password);
+        login_EditTextEmail = findViewById(R.id.login_layout_editText_email);
+        login_EditTextPassword = findViewById(R.id.login_layout_editText_password);
 
+
+        DatabaseReference databaseReference = mDatabase.getReference();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dataSnapshot.getValue();
+                for (DataSnapshot fileSnapshot : dataSnapshot.child("users").getChildren()) {
+                    String str = fileSnapshot.child("email").getValue(String.class);
+                    System.out.println(str);//이메일 파싱
+                    //System.out.println(fileSnapshot.getKey());//중요 -Uid 파싱
+                    uidList.add(str);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         // Configure Google Sign In
@@ -82,18 +112,31 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
-        mAuthListener =new FirebaseAuth.AuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                boolean isEmail = false;
+
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user !=null) {//인증 user 라면 메인페이지로 이동
-                    Intent intent= new Intent(getApplicationContext(),SelectActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else{//비인증 user 라면 정보 입력 페이지로 이동
-                    Intent intent= new Intent(getApplicationContext(),UserInfoActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                if (user != null) {//인증 user 라면 메인페이지로 이동
+                    for (String s : uidList) {
+                        if (s.equals(user.getEmail())) {
+                            isEmail = true;
+                        }
+                    }
+                    if (isEmail) {
+                        Intent intent = new Intent(getApplicationContext(), SelectActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                } else {//비인증 user 라면 정보 입력 페이지로 이동
+
                 }
             }
         };
@@ -102,7 +145,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         login_layout_joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(),EmailJoinActivity.class);
+                Intent intent = new Intent(getApplicationContext(), EmailJoinActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -112,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         loginOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser(login_EditTextEmail.getText().toString(),login_EditTextPassword.getText().toString());
+                loginUser(login_EditTextEmail.getText().toString(), login_EditTextPassword.getText().toString());
             }
         });
 
@@ -137,17 +180,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
-    private void loginUser(final String email, final String password){
+    private void loginUser(final String email, final String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
-                            loginUser(email,password);
-                            Toast.makeText(LoginActivity.this,"로그인실패!!",Toast.LENGTH_SHORT).show();
+                            loginUser(email, password);
+                            Toast.makeText(LoginActivity.this, "이메일 인증 실패!!", Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this,"로그인성공!!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "이메일 인증 성공!!", Toast.LENGTH_SHORT).show();
                         }
 
                         // ...
@@ -155,6 +198,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 });
 
     }
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -187,7 +231,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onStop() {
         super.onStop();
-        if(mAuthListener!=null){
+        if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }

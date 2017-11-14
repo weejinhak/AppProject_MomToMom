@@ -29,17 +29,14 @@ public class SelectActivity extends AppCompatActivity {
         //FireBase auth&database
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
         //button
         Button logout_button = findViewById(R.id.select_layout_logout_temporary_button_);
         ImageButton findFeedingRoomButton = findViewById(R.id.select_layout_findFeedingRoom_imgButton);
-        //intent_get
-        Intent intent =getIntent();
-        userInfoDto= (UserInfoDto) intent.getSerializableExtra("userInfo");
+
 
         //firebase_get
         String uid=auth.getCurrentUser().getUid();
-        //firebase_set
-        database.getReference().child("users").child(uid).setValue(userInfoDto);
 
         //clickEvent
         logout_button.setOnClickListener(new View.OnClickListener() {
