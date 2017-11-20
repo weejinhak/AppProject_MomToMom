@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +25,7 @@ public class EmailJoinActivity extends AppCompatActivity {
 
     private EditText join_editTextEmail;
     private EditText join_editTextPassword;
+    private EditText join_editTextPasswordOk;
     private String email;
     private String password;
 
@@ -38,11 +38,9 @@ public class EmailJoinActivity extends AppCompatActivity {
         //firebase
         mAuth = FirebaseAuth.getInstance();
 
-        join_editTextEmail=findViewById(R.id.userinfo_layout_text_name);
-        join_editTextPassword=findViewById(R.id.userinfo_layout_text_age);
-
-
-
+        join_editTextEmail=findViewById(R.id.emailJoin_layout_text_name);
+        join_editTextPassword=findViewById(R.id.emailJoin_layout_editText_password);
+        join_editTextPasswordOk =findViewById(R.id.emailJoin_layout_editText_passWordOk);
 
         Button joinOkButton=findViewById(R.id.userinfo_layout_Button_infoOk_button);
 
@@ -61,6 +59,13 @@ public class EmailJoinActivity extends AppCompatActivity {
                     join_editTextPassword.requestFocus();
                     return;
                 }
+                if (!join_editTextPasswordOk.getText().toString().equals(join_editTextPasswordOk.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다!!", Toast.LENGTH_SHORT).show();
+                    join_editTextPasswordOk.setText("");
+                    join_editTextPasswordOk.setText("");
+                    join_editTextPasswordOk.requestFocus();
+                    return;
+                }
 
                 createUser(join_editTextEmail.getText().toString(),join_editTextPassword.getText().toString());
             }
@@ -75,7 +80,6 @@ public class EmailJoinActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(EmailJoinActivity.this,"회원가입성공",Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.mom.momtomom;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -60,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // market 의 위치, 타이틀, 짧은설명 추가 가능.
         MarkerOptions marker = new MarkerOptions();
         marker.position(new LatLng(37.2821250, 127.0463560))
-                .title("아주대학교")
+                .title("아주수유실")
                 .snippet("ajou Univ");
         googleMap.addMarker(marker).showInfoWindow(); // 마커추가,화면에출력
 
@@ -70,7 +71,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
                 // 마커 클릭시 호출되는 콜백 메서드
-                Toast.makeText(getApplicationContext(), marker.getTitle() + " 클릭했음", Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(getApplicationContext(),FeedingRoomActivity.class);
+                intent.putExtra("latitude",marker.getPosition().latitude);
+                intent.putExtra("longitude",marker.getPosition().longitude);
+                intent.putExtra("feedingRoomTitle",marker.getTitle().toString());
+                startActivity(intent);
+                finish();
                 return false;
             }
         });
