@@ -63,12 +63,14 @@ public class FeedingRoomActivity extends FragmentActivity {
                 String selectedText = items[pos].toString();
                 Toast.makeText(getApplicationContext(), selectedText, Toast.LENGTH_SHORT).show();
                 if (selectedText.equals("기부자")) {
-                    Intent intent = new Intent(getApplicationContext(), addDonorBeneficialryActivitiy.class);
+                    Intent intent = new Intent(getApplicationContext(), addDonorActivitiy.class);
                     intent.putExtra("기부자",selectedText);
+                    intent.putExtra("feedingRoom",feedingRoomTitle);
                     startActivity(intent);
                 } else if (selectedText.equals("수혜자")) {
-                    Intent intent = new Intent(getApplicationContext(), addDonorBeneficialryActivitiy.class);
+                    Intent intent = new Intent(getApplicationContext(), addBeneficiaryActivity.class);
                     intent.putExtra("수혜자",selectedText);
+                    intent.putExtra("feedingRoom",feedingRoomTitle);
                     startActivity(intent);
                 }
             }

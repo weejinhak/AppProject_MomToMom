@@ -28,9 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -44,14 +45,22 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".UserInfoActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FeedingRoomActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".addDonorActivitiy"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".addBeneficiaryActivity"
             android:theme="@style/AppTheme" />
     </application>
 
