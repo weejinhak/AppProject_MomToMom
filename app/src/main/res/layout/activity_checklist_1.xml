@@ -30,13 +30,16 @@
         android:id="@+id/add_beneficiary_layout_textView_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="103dp"
         android:background="@color/titleTextColor1"
         android:gravity="center"
         android:text="@string/checkList_title_Text"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="57dp" />
+        app:layout_constraintBottom_toTopOf="@+id/checkList_layout_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checklist_layout_layout_my_toolbar" />
 
     <TextView
         android:id="@+id/checkList_layout_textView"
