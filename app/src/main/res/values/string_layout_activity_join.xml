@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="emailJoin_title_text">이메일로 회원가입</string>
     <string name="email_input_text">이메일을 입력하세요.</string>
     <string name="duplication_button_text">중복확인</string>
     <string name="password_input_text">비밀 번호를 입력하세요.</string>

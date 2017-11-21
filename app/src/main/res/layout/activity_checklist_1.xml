@@ -27,6 +27,18 @@
     </android.support.v7.widget.Toolbar>
 
     <TextView
+        android:id="@+id/add_beneficiary_layout_textView_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titleTextColor1"
+        android:gravity="center"
+        android:text="@string/checkList_title_Text"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <TextView
         android:id="@+id/checkList_layout_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +47,7 @@
         app:layout_constraintBottom_toTopOf="@+id/checkList_layout_yesCheckBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checklist_layout_layout_my_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/add_beneficiary_layout_textView_title" />
 
     <CheckBox
         android:id="@+id/checkList_layout_yesCheckBox"

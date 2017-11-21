@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="checkList_title_Text">체크리스트</string>
     <string name="checkList_Text1">아이(출생~12개월)에게 수유를 하고있나요?</string>
     <string name="checkList_Text2">기증 예정일로부터 6개월 이내의 혈액검사지를 소유하고 있나요?</string>
     <string name="checkList_Text3">수혈을 받으셨나요?</string>
