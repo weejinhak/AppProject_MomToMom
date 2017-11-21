@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/checkList_layout_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="checklist 내용을 입력 하는 곳"
+        app:layout_constraintBottom_toTopOf="@+id/checkList_layout_yesCheckBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkList_layout_yesCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkList_layout_yesChcekBox_text"
+        app:layout_constraintBottom_toTopOf="@+id/checkList_layout_beforeButton"
+        app:layout_constraintEnd_toStartOf="@+id/checkList_layout_noCheckBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkList_layout_textView" />
+
+    <CheckBox
+        android:id="@+id/checkList_layout_noCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkList_layout_noChcekBox_text"
+        app:layout_constraintBottom_toBottomOf="@+id/checkList_layout_yesCheckBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkList_layout_yesCheckBox"
+        app:layout_constraintTop_toTopOf="@+id/checkList_layout_yesCheckBox" />
+
+    <Button
+        android:id="@+id/checkList_layout_beforeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkList_layout_beforeButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkList_layout_nextButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkList_layout_yesCheckBox" />
+
+    <Button
+        android:id="@+id/checkList_layout_nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkList_layout_nextButton"
+        app:layout_constraintBottom_toBottomOf="@+id/checkList_layout_beforeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkList_layout_beforeButton"
+        app:layout_constraintTop_toTopOf="@+id/checkList_layout_beforeButton" />
+
+</android.support.constraint.ConstraintLayout>

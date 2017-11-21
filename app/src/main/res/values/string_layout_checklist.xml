@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="checkList_Text1">아이(출생~12개월)에게 수유를 하고있나요?</string>
+    <string name="checkList_Text2">기증 예정일로부터 6개월 이내의 혈액검사지를 소유하고 있나요?</string>
+    <string name="checkList_Text3">수혈을 받으셨나요?</string>
+    <string name="checkList_Text4">흡연이나 음주를 하시나요?</string>
+    <string name="checkList_Text5">질병으로 약물 복용 및 치료를 하고 있나요?</string>
+    <string name="checkList_Text6">호르몬 관련 약물 주사를 맞은적이 있나요?</string>
+    <string name="checkList_Text7">본인과 아이에게 발열 증상이 있나요?</string>
+    <string name="checkList_Text8">만남시 출생신고서를 보여줄 수 있나요?</string>
+    <string name="checkList_Text9">만남시 혈액검사지를 보여줄 수 있나요?</string>
+    
+    <string name="checkList_layout_nextButton">다음</string>
+    <string name="checkList_layout_beforeButton">이전</string>
+    <string name="checkList_layout_yesChcekBox_text">네</string>
+    <string name="checkList_layout_noChcekBox_text">아니오</string>
+</resources>
