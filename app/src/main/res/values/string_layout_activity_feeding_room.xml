@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="add_Donor_Beneficiary_Button_text">기증자및수혜자등록</string>
-    <string name="feedigRoom_title_text">수유실</string>
+    <string name="add_Donor_Beneficiary_Button_text">기증자 등록하기</string>
+    <string name="feedigRoom_title_text">수유실 정보</string>
+    <string name="feedigRoom_name_text">수유실 이름</string>
+    <string name="Road_Search_Button_text">길찾기</string>
     
 </resources>

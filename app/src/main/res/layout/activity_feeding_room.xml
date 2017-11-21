@@ -4,40 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EB6A6A">
+    android:background="#FFFFFF">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/add_donor_layout_layout_my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageView
+            android:id="@+id/login_layout_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/momtomom_toolbar_logo" />
+    </android.support.v7.widget.Toolbar>
+
 
     <TextView
         android:id="@+id/feedingRoom_textView_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/titleTextColor1"
+        android:gravity="center"
         android:text="@string/feedigRoom_title_text"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/add_Donor_Beneficiary_button"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/add_donor_layout_layout_my_toolbar" />
+
+
+    <TextView
+        android:id="@+id/feedingRoom_layout_textView_feedingRoomName"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="@string/feedigRoom_name_text"
+        app:layout_constraintBottom_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_textView_title" />
 
     <Button
-        android:id="@+id/add_Donor_Beneficiary_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/feedingRoom_layout_Button_roadSearch_Button"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:background="@drawable/feeding_room_button"
+        android:textColor="#FFFFFF"
+        android:text="@string/Road_Search_Button_text"
+        app:layout_constraintEnd_toStartOf="@+id/feedingRoom_layout_Button_donorAdd_Button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="162dp" />
+
+
+    <Button
+        android:id="@+id/feedingRoom_layout_Button_donorAdd_Button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/feeding_room_button"
         android:text="@string/add_Donor_Beneficiary_Button_text"
+        app:layout_constraintBottom_toBottomOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
+        app:layout_constraintTop_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <View
+        android:id="@+id/login_layout_view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="#999999"
         app:layout_constraintBottom_toTopOf="@+id/donor_beneficiary_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_layout_Button_roadSearch_Button" />
+
 
     <ListView
         android:id="@+id/donor_beneficiary_list"
         android:layout_width="368dp"
-        android:layout_height="282dp"
+        android:layout_height="283dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_Donor_Beneficiary_button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_layout_view2" />
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="192dp" />
 
 
 </android.support.constraint.ConstraintLayout>

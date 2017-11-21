@@ -35,10 +35,10 @@ public class FeedingRoomActivity extends FragmentActivity {
         feedingRoomTitle = intent.getExtras().getString("feedingRoomTitle");
         System.out.println("intent Data \n" + latitude + "\n" + longitude + "\n" + feedingRoomTitle);
 
-        TextView feedRoomTitle = findViewById(R.id.feedingRoom_textView_title);
+        TextView feedRoomTitle = findViewById(R.id.feedingRoom_layout_textView_feedingRoomName);
         feedRoomTitle.setText(feedingRoomTitle);
 
-        Button add_Donor_Beneficiary_Button = findViewById(R.id.add_Donor_Beneficiary_button);
+        Button add_Donor_Beneficiary_Button = findViewById(R.id.feedingRoom_layout_Button_donorAdd_Button);
 
         add_Donor_Beneficiary_Button.setOnClickListener(new View.OnClickListener() {
             @Override

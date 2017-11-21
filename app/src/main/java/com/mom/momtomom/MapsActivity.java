@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -62,7 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions marker = new MarkerOptions();
         marker.position(new LatLng(37.2821250, 127.0463560))
                 .title("아주수유실")
-                .snippet("ajou Univ");
+                .snippet("ajou Univ")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.googlemap_marker_icon));
         googleMap.addMarker(marker).showInfoWindow(); // 마커추가,화면에출력
 
         // 마커클릭 이벤트 처리
