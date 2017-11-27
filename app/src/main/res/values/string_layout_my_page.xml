@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="myPage_title_text">나의 요청 및 수신 보기</string>
+    <string name="myPage_requestList_text">내가 요청한 수유실</string>
+    <string name="myPate_receiveList_text">나에게 요청한 수혜자</string>
+
+</resources>

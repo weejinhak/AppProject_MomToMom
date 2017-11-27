@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
+        android:layout_marginTop="57dp"
         android:background="@color/titleTextColor1"
         android:gravity="center"
         android:text="기증자 신청"
@@ -39,7 +42,7 @@
         app:layout_constraintBottom_toTopOf="@+id/addDonor_layout_textView_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_donor_layout_layout_my_toolbar" />
+        app:layout_constraintTop_toTopOf="@+id/add_donor_layout_layout_my_toolbar" />
 
 
     <TextView
@@ -124,11 +127,18 @@
         android:id="@+id/addDonor_layout_button_nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="다음"
         android:background="#B34141"
+        android:text="다음"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addDonor_layout_editText_phoneNumber" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="57dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.mom.momtomom;
+package com.mom.momtomom.DTO;
 
 import java.io.Serializable;
 
@@ -12,6 +12,7 @@ public class UserInfoDto implements Serializable {
     public String name;
     public String nickName;
     public String age;
+    public String phoneNumber;
 
 
     public String getEmail() {
@@ -44,5 +45,13 @@ public class UserInfoDto implements Serializable {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

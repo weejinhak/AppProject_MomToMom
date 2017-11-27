@@ -87,12 +87,27 @@
         android:hint="@string/essentialAge"
         android:inputType="text"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_Button_infoOk_button"
+        app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_text_phoneNumber"
         app:layout_constraintEnd_toEndOf="@+id/userinfo_layout_text_name"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@+id/userinfo_layout_text_name"
         app:layout_constraintStart_toStartOf="@+id/userinfo_layout_text_name"
         app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_text_name" />
+
+    <EditText
+        android:id="@+id/userinfo_layout_text_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone"
+        android:textSize="15sp"
+        android:background="@drawable/join_edittext_border"
+        android:layout_marginTop="50dp"
+        android:hint="@string/userPhoneNumber"
+        app:layout_constraintBottom_toTopOf="@+id/userinfo_layout_Button_infoOk_button"
+        app:layout_constraintEnd_toEndOf="@+id/userinfo_layout_text_age"
+        app:layout_constraintStart_toStartOf="@+id/userinfo_layout_text_age"
+        app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_text_age" />
 
     <Button
         android:id="@+id/userinfo_layout_Button_infoOk_button"
@@ -111,7 +126,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_text_age" />
+        app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_text_phoneNumber" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -123,7 +138,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userinfo_layout_layout_my_toolbar"
-        app:srcCompat="@drawable/ic_menu_camera" />
+        app:srcCompat="@drawable/donor_item_donor_img" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

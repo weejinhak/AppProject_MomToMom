@@ -2,7 +2,6 @@ package com.mom.momtomom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,8 +11,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.io.Serializable;
+import com.mom.momtomom.DTO.UserInfoDto;
 
 /**
  * Created by wee on 2017. 11. 6..
@@ -41,6 +39,7 @@ public class UserInfoActivity extends AppCompatActivity {
         final EditText editNickName = findViewById(R.id.userinfo_layout_text_nickName);
         final EditText editName = findViewById(R.id.userinfo_layout_text_name);
         final EditText editAge = findViewById(R.id.userinfo_layout_text_age);
+        final EditText editPhoneNumber= findViewById(R.id.userinfo_layout_text_phoneNumber);
 
         userInfoDto = new UserInfoDto();
         uid = auth.getCurrentUser().getUid();
@@ -66,12 +65,18 @@ public class UserInfoActivity extends AppCompatActivity {
                     editAge.requestFocus();
                     return;
                 }
+                if(editPhoneNumber.getText().toString().length()==0){
+                    Toast.makeText(getApplicationContext(),"전화번호 입력하세요!",Toast.LENGTH_SHORT).show();
+                    editPhoneNumber.requestFocus();
+                    return;
+                }
 
                 //setDto
                 userInfoDto.setAge(editAge.getText().toString());
                 userInfoDto.setEmail(email);
                 userInfoDto.setName(editName.getText().toString());
                 userInfoDto.setNickName(editNickName.getText().toString());
+                userInfoDto.setPhoneNumber(editPhoneNumber.getText().toString());
 
                 //uid에 맞는 정보 디비 입력
                 mDatabase.getReference().child("users").child(uid).setValue(userInfoDto);

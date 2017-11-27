@@ -42,7 +42,7 @@ public class EmailJoinActivity extends AppCompatActivity {
         join_editTextPassword=findViewById(R.id.emailJoin_layout_editText_password);
         join_editTextPasswordOk =findViewById(R.id.emailJoin_layout_editText_passWordOk);
 
-        Button joinOkButton=findViewById(R.id.userinfo_layout_Button_infoOk_button);
+        Button joinOkButton=findViewById(R.id.emailJoin_layout_Button_infoOk_button);
 
         joinOkButton.setOnClickListener(new View.OnClickListener() {
             @Override
