@@ -15,4 +15,5 @@
     <string name="checkList_layout_beforeButton">이전</string>
     <string name="checkList_layout_yesChcekBox_text">네</string>
     <string name="checkList_layout_noChcekBox_text">아니오</string>
+    <string name="checkList_layout_listOkButton_text">기증 적합 여부 확인하기</string>
 </resources>

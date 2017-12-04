@@ -36,6 +36,8 @@ dependencies {
     //googleMap
     compile 'com.google.android.gms:play-services-maps:11.2.0'
 
+    //excel
+    compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.12'
 
 }
 allprojects {

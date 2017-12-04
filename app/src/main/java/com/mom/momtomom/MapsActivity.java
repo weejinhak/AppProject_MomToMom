@@ -1,9 +1,10 @@
 package com.mom.momtomom;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,9 +16,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Geocoder mCoder;
+    private List<Address> addr;
+    private LatLng newLatLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,21 +59,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        // ↑매개변수로 GoogleMap 객체가 넘어옵니다.
+        Excel();
+        // ↑매개변수로 GoogleMap 객체가 넘어온다.
+        String str = "아주대학교";
+        mCoder = new Geocoder(this);
+        try {
+            addr = mCoder.getFromLocationName(str, 1);
+            Double Lat = addr.get(0).getLatitude();
+            Double Lon = addr.get(0).getLongitude();
+            newLatLng = new LatLng(Lat, Lon);
 
-        // camera 좌쵸를 서울역 근처로 옮겨 봅니다.
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(37.2821250, 127.0463560) ));  // 위도, 경도
+            System.out.println("좌표:" + Lat + ":" + Lon);
 
-        // 구글지도(지구) 에서의 zoom 레벨은 1~23 까지 가능합니다.
-        // 여러가지 zoom 레벨은 직접 테스트해보세요
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // camera 좌표를 아주대 근처로 옮긴다
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(newLatLng));  // 위도, 경도
+
+        // 구글지도(지구) 에서의 zoom 레벨은 1~23 까지 가능.
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         googleMap.animateCamera(zoom);   // moveCamera 는 바로 변경하지만,
-        // animateCamera() 는 근거리에선 부드럽게 변경합니다
+        // animateCamera() 는 근거리에선 부드럽게 변경.
 
         // marker 표시
         // market 의 위치, 타이틀, 짧은설명 추가 가능.
         MarkerOptions marker = new MarkerOptions();
-        marker.position(new LatLng(37.2821250, 127.0463560))
+        marker.position(newLatLng)
                 .title("아주수유실")
                 .snippet("ajou Univ")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.googlemap_marker_icon));
@@ -73,15 +98,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
                 // 마커 클릭시 호출되는 콜백 메서드
-                Intent intent= new Intent(getApplicationContext(),FeedingRoomActivity.class);
-                intent.putExtra("latitude",marker.getPosition().latitude);
-                intent.putExtra("longitude",marker.getPosition().longitude);
-                intent.putExtra("feedingRoomTitle",marker.getTitle().toString());
+                Intent intent = new Intent(getApplicationContext(), FeedingRoomActivity.class);
+                intent.putExtra("latitude", marker.getPosition().latitude);
+                intent.putExtra("longitude", marker.getPosition().longitude);
+                intent.putExtra("feedingRoomTitle", marker.getTitle().toString());
                 startActivity(intent);
                 finish();
                 return false;
             }
         });
+    }
+
+    public void Excel(){
+        Workbook workbook=null;
+        Sheet sheet= null;
+        try {
+            InputStream inputStream = getBaseContext().getResources().getAssets().open("2017_FeedingRoom.xls");
+            workbook =Workbook.getWorkbook(inputStream);
+            sheet = workbook.getSheet(0);
+            int MaxColumn=2,RowStart=0,RowEnd=sheet.getColumn(MaxColumn-1).length-1,ColumnStart=6,
+                    ColumnEnd=sheet.getRow(2).length-1;
+            for(int row= RowStart;row<=RowEnd;row++){
+                String excelload=sheet.getCell(ColumnStart,row).getContents();
+                System.out.println(excelload);
+            }
+            workbook.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (BiffException e) {
+            e.printStackTrace();
+        }
     }
 }
 

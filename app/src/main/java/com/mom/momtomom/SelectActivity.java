@@ -34,10 +34,12 @@ public class SelectActivity extends AppCompatActivity {
         //button
         Button logout_button = findViewById(R.id.select_layout_logout_temporary_button_);
         ImageButton findFeedingRoomButton = findViewById(R.id.select_layout_findFeedingRoom_imgButton);
+        ImageButton guiedGoButton= findViewById(R.id.select_layout_guide_imgButton);
+        Button myPageGoButton = findViewById(R.id.select_layout_myInfo_button);
 
 
         //firebase_get
-        String uid=auth.getCurrentUser().getUid();
+        String uid = auth.getCurrentUser().getUid();
 
         //clickEvent
         logout_button.setOnClickListener(new View.OnClickListener() {
@@ -54,9 +56,24 @@ public class SelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("눌림");
-                Intent intent= new Intent(getApplicationContext(),MapsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        myPageGoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                startActivity(intent);
+            }
+        });
+        guiedGoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),GuideActivity.class);
+                startActivity(intent);
             }
         });
     }

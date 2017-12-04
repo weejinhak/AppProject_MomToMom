@@ -49,7 +49,7 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         setContentView(R.layout.activity_feeding_room);
 
         //firebase
-        mDatabase=FirebaseDatabase.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
 
         //create Object
         backPressCloseHandler = new BackPressCloseHandler(this);
@@ -73,8 +73,8 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         donorListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("DonorUid",donorInfoLists.get(position).getDonorUid());
-                donorUid=donorInfoLists.get(position).getDonorUid();
+                Log.d("DonorUid", donorInfoLists.get(position).getDonorUid());
+                donorUid = donorInfoLists.get(position).getDonorUid();
                 showDialog(donorUid);
             }
         });
@@ -97,7 +97,7 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
 
         //로그인한사람정보
         String userName = (String) dataSnapshot.child("users").child(getUid()).child("name").getValue();
-        String userPhoneNum=(String) dataSnapshot.child("users").child(getUid()).child("phoneNumber").getValue();
+        String userPhoneNum = (String) dataSnapshot.child("users").child(getUid()).child("phoneNumber").getValue();
         beneficiaryInfoDto.setBeneficiaryName(userName);
         beneficiaryInfoDto.setBeneficiaryPhoneNumber(userPhoneNum);
 
@@ -113,7 +113,7 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         donorListView.setAdapter(donorListAdapter);
     }
 
-    private void showDialog(final String donorUid){
+    private void showDialog(final String donorUid) {
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
         alt_bld.setMessage("기부자에게 수혜 요청을 하시겠습니까?").setCancelable(
                 false).setPositiveButton("Yes",
@@ -122,6 +122,9 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
                         mDatabase.getReference().child("users").child(donorUid).child("receive").push().setValue(beneficiaryInfoDto);
                         mDatabase.getReference().child("users").child(getUid()).child("request").push().setValue(feedingRoomTitle);
                         Toast.makeText(getApplicationContext(), "요청 완료", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                        startActivity(intent);
+                        finish();
                         dialog.cancel();
                     }
                 }).setNegativeButton("No",
@@ -141,7 +144,8 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
 
 
     @Override
-    public void onCancelled(DatabaseError databaseError) {}
+    public void onCancelled(DatabaseError databaseError) {
+    }
 
     @Override
     protected void onStart() {
