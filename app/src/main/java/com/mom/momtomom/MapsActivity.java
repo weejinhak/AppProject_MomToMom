@@ -15,9 +15,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mom.momtomom.DTO.PossibleMakerDto;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import jxl.Sheet;
@@ -26,14 +29,22 @@ import jxl.read.biff.BiffException;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private Geocoder mCoder;
     private List<Address> addr;
     private LatLng newLatLng;
+    private LatLng newLetLng1;
+    private List<LatLng> allFeedingRoomList;
+    private List<String> feedingRoom_kor;
+    private FirebaseDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        feedingRoom_kor = new ArrayList<>();
+        allFeedingRoomList = new ArrayList<>();
+        mCoder = new Geocoder(this);
 
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -41,43 +52,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        // 과거에는 GoogleMap 객체를 얻어오기 위해
-        // mapFragment.getMap() 메소드를 사용했으나
-        // 현재 getMap() 은 deprecate 되었습니다.
-        // 지금은 위와 같이 getMapAsync() 를 하고
-        // 아래의 OnMapReady() 에서 처리를 GoogleMap 객체관련
-        // 처리를 합니다.
-
     }
 
     /**
-     * OnMapReady 는 map이 사용가능하면 호출되는 콜백 메소드입니다
-     * 여기서 marker 나 line, listener, camera 이동 등을 설정해두면 됩니다.
-     * 이번 예제에서는 서울역 근처에 marker를 더하고 적절한 title과, zoom을 설정해둡니다
+     * OnMapReady 는 map이 사용가능하면 호출되는 콜백 메소드
+     * 여기서 marker 나 line, listener, camera 이동 등을 설정.
      * 이 시점에서, 만약 사용자 기기게 Google Play service가 설치되지 않으면
-     * 설치하라고 메세지가 뜨게 되고,  설치후에 다시 이 앱으로 제어권이 넘어옵니다
+     * 설치하라고 메세지가 뜨게 되고,  설치후에 다시 이 앱으로 제어권이 넘어옴
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         Excel();
-        // ↑매개변수로 GoogleMap 객체가 넘어온다.
-        String str = "아주대학교";
-        mCoder = new Geocoder(this);
-        try {
-            addr = mCoder.getFromLocationName(str, 1);
-            Double Lat = addr.get(0).getLatitude();
-            Double Lon = addr.get(0).getLongitude();
-            newLatLng = new LatLng(Lat, Lon);
 
-            System.out.println("좌표:" + Lat + ":" + Lon);
+        //문제
+        for (int i = 0; i < feedingRoom_kor.size(); i++) {
+            try {
+                addr = mCoder.getFromLocationName(feedingRoom_kor.get(i), 1);
+                if(addr.size()!=0){
+                    Double Lat = addr.get(0).getLatitude();
+                    Double Lon = addr.get(0).getLongitude();
+                    newLatLng = new LatLng(Lat, Lon);
+                    allFeedingRoomList.add(newLatLng);
+                    System.out.println("수유실:"+feedingRoom_kor.get(i));
+                    System.out.println("좌표:"+Lat+":"+Lon);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        // camera 좌표를 아주대 근처로 옮긴다
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(newLatLng));  // 위도, 경도
+        System.out.println("좌표가 있는 수유실의 수" + allFeedingRoomList.size());
 
+        // camera 좌표를 아주대 근처로 옮긴다
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(37.2821251, 127.04635589999998)));  // 위도, 경도
         // 구글지도(지구) 에서의 zoom 레벨은 1~23 까지 가능.
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         googleMap.animateCamera(zoom);   // moveCamera 는 바로 변경하지만,
@@ -86,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // marker 표시
         // market 의 위치, 타이틀, 짧은설명 추가 가능.
         MarkerOptions marker = new MarkerOptions();
-        marker.position(newLatLng)
+        marker.position(new LatLng(37.2821251, 127.04635589999998))
                 .title("아주수유실")
                 .snippet("ajou Univ")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.googlemap_marker_icon));
@@ -109,27 +118,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-    public void Excel(){
-        Workbook workbook=null;
-        Sheet sheet= null;
+    public void Excel() {
+        Workbook workbook = null;
+        Sheet sheet = null;
         try {
             InputStream inputStream = getBaseContext().getResources().getAssets().open("2017_FeedingRoom.xls");
-            workbook =Workbook.getWorkbook(inputStream);
+            workbook = Workbook.getWorkbook(inputStream);
             sheet = workbook.getSheet(0);
-            int MaxColumn=2,RowStart=0,RowEnd=sheet.getColumn(MaxColumn-1).length-1,ColumnStart=6,
-                    ColumnEnd=sheet.getRow(2).length-1;
-            for(int row= RowStart;row<=RowEnd;row++){
-                String excelload=sheet.getCell(ColumnStart,row).getContents();
-                System.out.println(excelload);
+            int MaxColumn = 2, RowStart = 3, RowEnd = sheet.getColumn(MaxColumn - 1).length - 1, ColumnStart = 6,
+                    ColumnEnd = sheet.getRow(2).length - 1;
+            for (int row = RowStart; row <= RowEnd; row++) {
+                String excelload = sheet.getCell(ColumnStart, row).getContents();
+                feedingRoom_kor.add(excelload);
             }
             workbook.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (BiffException e) {
+        } catch (IOException | BiffException e) {
             e.printStackTrace();
         }
     }
+
+
 }
 
 
