@@ -61,7 +61,6 @@ public class SelectActivity extends AppCompatActivity {
                 System.out.println("눌림");
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

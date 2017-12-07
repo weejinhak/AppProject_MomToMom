@@ -47,11 +47,11 @@
 
     <TextView
         android:id="@+id/feedingRoom_layout_textView_feedingRoomName"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:hint="@string/feedigRoom_name_text"
-        android:textSize="20dp"
+        android:textSize="15sp"
         android:textColor="@color/titleColor"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button"

@@ -114,7 +114,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkList_layout_nextButton" />
+        app:layout_constraintTop_toBottomOf="@+id/cㅈㅉheckList_layout_nextButton" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"

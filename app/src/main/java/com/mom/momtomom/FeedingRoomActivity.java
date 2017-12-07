@@ -167,6 +167,7 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
 
     @Override
     public void onBackPressed() {
+        finish();
         backPressCloseHandler.onBackPressed();
     }
 }
