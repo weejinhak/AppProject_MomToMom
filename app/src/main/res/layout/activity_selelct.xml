@@ -11,16 +11,13 @@
         android:id="@+id/select_layout_logo_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/select_layout_myInfo_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/login_layout_logo_img" />
 
     <ImageButton
@@ -38,7 +35,6 @@
         android:id="@+id/select_layout_guide_imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="#EB6A6A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/select_layout_findFeedingRoom_imgButton"
@@ -47,44 +43,45 @@
 
     <Button
         android:id="@+id/select_layout_myInfo_button"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:background="#B34141"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/my_mtm_button"
         android:text="@string/myInfo_go_text"
         android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/select_layout_textView_find_feeding_room"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
         android:text="수유실 찾기"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_layout_findFeedingRoom_imgButton"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/select_layout_findFeedingRoom_imgButton"
-        android:layout_marginLeft="0dp"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintLeft_toLeftOf="@+id/select_layout_findFeedingRoom_imgButton"
-        app:layout_constraintHorizontal_bias="0.737" />
+        app:layout_constraintRight_toRightOf="@+id/select_layout_findFeedingRoom_imgButton"
+        app:layout_constraintStart_toStartOf="@+id/select_layout_findFeedingRoom_imgButton"
+        app:layout_constraintTop_toBottomOf="@+id/select_layout_findFeedingRoom_imgButton" />
 
     <TextView
         android:id="@+id/select_layout_textView_find_guide"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
         android:text="@string/find_guideBook_text"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/select_layout_guide_imgButton"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/select_layout_guide_imgButton"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/select_layout_guide_imgButton"
         app:layout_constraintHorizontal_bias="0.238"
-        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/select_layout_guide_imgButton"
+        app:layout_constraintRight_toRightOf="@+id/select_layout_guide_imgButton"
         app:layout_constraintTop_toBottomOf="@+id/select_layout_guide_imgButton" />
 
     <Button

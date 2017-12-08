@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:layout_editor_absoluteY="25dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/emailJoin_layout_layout_my_toolbar"
@@ -13,10 +14,6 @@
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <ImageView
@@ -37,85 +34,108 @@
         android:text="@string/emailJoin_title_text"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailJoin_layout_layout_my_toolbar" />
 
 
     <EditText
         android:id="@+id/emailJoin_layout_text_name"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/join_edittext_border"
         android:ems="15"
         android:hint="@string/email_input_text"
         android:inputType="textEmailAddress"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/emailJoin_layout_editText_password"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedingRoom_textView_title" />
 
     <EditText
         android:id="@+id/emailJoin_layout_editText_password"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/join_edittext_border"
         android:ems="15"
         android:hint="@string/password_input_text"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/emailJoin_layout_editText_passWordOk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailJoin_layout_text_name" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/emailJoin_layout_text_name"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/emailJoin_layout_editText_passWordOk"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/join_edittext_border"
         android:ems="10"
         android:hint="@string/password_input_ok_text"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/emailJoin_infoTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/emailJoin_layout_editText_password"
+        app:layout_constraintStart_toStartOf="@+id/emailJoin_layout_editText_password"
         app:layout_constraintTop_toBottomOf="@+id/emailJoin_layout_editText_password" />
 
 
     <Button
         android:id="@+id/emailJoin_layout_Button_infoOk_button"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="166dp"
-        android:layout_marginStart="130dp"
-        android:background="#EB6A6A"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/mtm_button"
         android:text="@string/join_text"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/emailJoin_layout_editText_passWordOk"
+        app:layout_constraintStart_toStartOf="@+id/emailJoin_layout_editText_passWordOk"
         app:layout_constraintTop_toBottomOf="@+id/emailJoin_infoTextView" />
 
     <TextView
         android:id="@+id/emailJoin_infoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="236dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/validation_info_text"
         android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/emailJoin_layout_Button_infoOk_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/emailJoin_layout_editText_passWordOk"
         app:layout_constraintTop_toBottomOf="@+id/emailJoin_layout_editText_passWordOk"
         tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="4자~15자 이내의 영문/숫자"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/emailJoin_layout_text_name"
+        app:layout_constraintTop_toBottomOf="@+id/emailJoin_layout_text_name" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/join_edittext_border"
+        android:paddingBottom="0dp"
+        android:paddingTop="0dp"
+        android:text="@string/duplication_button_text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/emailJoin_layout_text_name"
+        app:layout_constraintEnd_toEndOf="@+id/emailJoin_layout_text_name"
+        app:layout_constraintTop_toTopOf="@+id/emailJoin_layout_text_name" />
 
 </android.support.constraint.ConstraintLayout>

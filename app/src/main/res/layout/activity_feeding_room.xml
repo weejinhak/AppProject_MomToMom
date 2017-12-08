@@ -13,7 +13,6 @@
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -31,64 +30,41 @@
         android:id="@+id/feedingRoom_textView_title"
         android:layout_width="match_parent"
         android:layout_height="19dp"
-        android:layout_marginBottom="32dp"
         android:layout_marginTop="55dp"
         android:background="@color/titleTextColor1"
         android:gravity="center"
         android:text="@string/feedigRoom_title_text"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/feedingRoom_layout_textView_feedingRoomName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/feedingRoom_layout_textView_feedingRoomName"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:hint="@string/feedigRoom_name_text"
-        android:textSize="15sp"
-        android:textColor="@color/titleColor"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_textView_title" />
-
     <Button
         android:id="@+id/feedingRoom_layout_Button_roadSearch_Button"
         android:layout_width="70dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/feeding_room_button"
         android:text="@string/Road_Search_Button_text"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/feedingRoom_layout_Button_donorAdd_Button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_layout_textView_feedingRoomName" />
+        app:layout_constraintStart_toStartOf="@+id/feedingRoom_layout_textView_feedingRoomAddress"
+        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_layout_textView_feedingRoomAddress" />
 
 
     <Button
         android:id="@+id/feedingRoom_layout_Button_donorAdd_Button"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/feeding_room_button"
         android:text="@string/add_Donor_Beneficiary_Button_text"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
-        app:layout_constraintTop_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/feedingRoom_layout_Button_roadSearch_Button" />
 
 
     <View
@@ -103,13 +79,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="192dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
@@ -130,14 +99,36 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/feedingRoom_layout_Button_donorAdd_Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/feedingRoom_layout_Button_donorAdd_Button"
         app:layout_constraintTop_toBottomOf="@+id/feedingRoom_textView_title"
         app:srcCompat="@drawable/feeding_room_img" />
+
+    <TextView
+        android:id="@+id/feedingRoom_layout_textView_feedingRoomName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="슈유실이름"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_textView_title" />
+
+    <TextView
+        android:id="@+id/feedingRoom_layout_textView_feedingRoomAddress"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="수유실 주소"
+        app:layout_constraintStart_toStartOf="@+id/feedingRoom_layout_textView_feedingRoomName"
+        app:layout_constraintTop_toBottomOf="@+id/feedingRoom_layout_textView_feedingRoomName" />
 
 
 </android.support.constraint.ConstraintLayout>

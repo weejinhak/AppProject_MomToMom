@@ -1,54 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
     android:background="@color/titleTextColor1">
-
 
     <ImageView
         android:id="@+id/list_donor_img"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="5dp"
-        android:scaleType="fitCenter" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/donor_item_donor_img" />
 
+    <TextView
+        android:id="@+id/list_donor_name"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="기증자"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/list_donor_img"
+        app:layout_constraintTop_toTopOf="@+id/list_donor_img" />
 
-    <LinearLayout
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/list_donor_date"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="출산날짜"
+        app:layout_constraintStart_toStartOf="@+id/list_donor_name"
+        app:layout_constraintTop_toBottomOf="@+id/list_donor_name" />
 
-        <TextView
-            android:id="@+id/list_donor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="기부자"
-            android:textSize="15sp" />
+    <TextView
+        android:id="@+id/list_donor_certificate"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="증명서 유무"
+        app:layout_constraintStart_toStartOf="@+id/list_donor_date"
+        app:layout_constraintTop_toBottomOf="@+id/list_donor_date" />
 
-        <TextView
-            android:id="@+id/list_donor_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="출산일"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/list_donor_certificate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="증명서 소유"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <ImageView
+    <ImageButton
         android:id="@+id/list_donor_request_img"
-        android:layout_width="70dp"
-        android:layout_height="60dp"
-        android:scaleType="fitCenter" />
-
-
-</LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_donor_name"
+        app:srcCompat="@android:drawable/btn_star" />
+</android.support.constraint.ConstraintLayout>
