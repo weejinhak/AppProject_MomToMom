@@ -20,7 +20,7 @@ import com.mom.momtomom.DTO.DonorInfoDto;
  * Created by wee on 2017. 11. 21..
  */
 
-public class DonorCheckListActivity extends AppCompatActivity {
+public class AddDonorCheckListActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;

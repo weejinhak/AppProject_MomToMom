@@ -16,4 +16,14 @@
     <string name="checkList_layout_yesChcekBox_text">네</string>
     <string name="checkList_layout_noChcekBox_text">아니오</string>
     <string name="checkList_layout_listOkButton_text">기증 적합 여부 확인하기</string>
+
+
+    <string name="addAgree_layout_agreeInfo">*위 정보는 수혜자의 신청을 승낙하였을 시에 수혜자에게 공개됩니다.</string>
+    <string name="addAgree_layout_agree1">출생신고서를 소지하고 계십니까?</string>
+    <string name="addAgree_layout_agree2">혈액검사지를 소지하고 계십니까?</string>
+    <string name="addAgree_layout_agree2Info">HIV,VDRL,HBsAg/Ab HCV Ab 네가지 혈액검사지, 첫 6개월 기증 예정일로 부터 6개월 이내의 혈액검사지로 날짜가 분명히 명시되어있어야 합니다</string>
+
+    <string name="addAgree_layout_agree3">자유의사로 무상으로 기증하며,\n 비영리 목적으로 모유가 사용됨에 동의하십니까?</string>
+
+
 </resources>

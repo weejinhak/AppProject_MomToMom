@@ -33,7 +33,7 @@ public class AddDonorActivitiy extends AppCompatActivity{
 
         final String feedingRoom = intent.getExtras().getString("feedingRoomTitle");
         final EditText donorName= findViewById(R.id.addDonor_layout_editText_name);
-        final EditText donorAdress= findViewById(R.id.addDonor_layout_editText_residence);
+        final EditText donorAddress= findViewById(R.id.addDonor_layout_editText_residence);
         final EditText donorDeliveryDate= findViewById(R.id.addDonor_layout_editText_calving_date);
         final EditText donorEmail=findViewById(R.id.addDonor_layout_editText_email);
         final EditText donorPhoneNumber=findViewById(R.id.addDonor_layout_editText_phoneNumber);
@@ -45,18 +45,16 @@ public class AddDonorActivitiy extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 donorInfoDto.setDonorName(donorName.getText().toString());
-                donorInfoDto.setDonorAdress(donorAdress.getText().toString());
+                donorInfoDto.setDonorAddress(donorAddress.getText().toString());
                 donorInfoDto.setDonorDeliveryDate(donorDeliveryDate.getText().toString());
                 donorInfoDto.setDonorEmail(donorEmail.getText().toString());
                 donorInfoDto.setDonorPhoneNumber(Integer.parseInt(donorPhoneNumber.getText().toString()));
                 donorInfoDto.setDonorUid(uid);
 
-                Intent intent= new Intent(getApplicationContext(),DonorCheckListActivity.class);
+                Intent intent= new Intent(getApplicationContext(),AddDonorAgreeActivity.class);
                 intent.putExtra("donorInfoDto",donorInfoDto);
                 intent.putExtra("feedingRoomTitle",feedingRoom);
                 startActivity(intent);
-                finish();
-
             }
         });
 

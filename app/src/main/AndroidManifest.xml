@@ -9,7 +9,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 
     <application
@@ -64,13 +64,17 @@
             android:name=".AddBeneficiaryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DonorCheckListActivity"
+            android:name=".AddDonorCheckListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyPageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GuideActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".GuideActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddDonorAgreeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

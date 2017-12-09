@@ -1,11 +1,8 @@
 package com.mom.momtomom;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,9 +25,8 @@ import jxl.read.biff.BiffException;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private Geocoder mCoder;
     private List<String> feedingRoom_kor;
-    private List<Address> addr;
+    //private List<Address> addr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         feedingRoom_kor = new ArrayList<>();
-        mCoder = new Geocoder(this);
+        //Geocoder mCoder = new Geocoder(this);
 
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -62,7 +58,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //문제
 
 
-/*        for (int i = 0; i < feedingRoom_kor.size(); i++) {
+        /*
+
+        for (int i = 0; i < feedingRoom_kor.size(); i++) {
             try {
                 addr = mCoder.getFromLocationName(feedingRoom_kor.get(i), 1);
                 if(addr.size()!=0){
@@ -74,8 +72,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
 
-        }*/
+
+        */
 
 
         // camera 좌표를 아주대 근처로 옮긴다
@@ -111,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Intent intent = new Intent(getApplicationContext(), FeedingRoomActivity.class);
                 intent.putExtra("latitude", marker.getPosition().latitude);
                 intent.putExtra("longitude", marker.getPosition().longitude);
-                intent.putExtra("feedingRoomTitle", marker.getTitle().toString());
+                intent.putExtra("feedingRoomTitle", marker.getTitle());
                 startActivity(intent);
                 return false;
             }
@@ -119,8 +119,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void Excel() {
-        Workbook workbook = null;
-        Sheet sheet = null;
+        Workbook workbook;
+        Sheet sheet;
         try {
             InputStream inputStream = getBaseContext().getResources().getAssets().open("2017_FeedingRoom_Parsing.xls");
             workbook = Workbook.getWorkbook(inputStream);
@@ -147,5 +147,3 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         finish();
     }
 }
-
-

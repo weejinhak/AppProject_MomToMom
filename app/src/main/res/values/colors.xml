@@ -6,4 +6,5 @@
     <color name="titleColor">#EB6A6A</color>
     <color name="titleTextColor">#FFFFFF</color>
     <color name="titleTextColor1">#FFCCCC</color>
+    <color name="textBlackColor">#000000</color>
 </resources>

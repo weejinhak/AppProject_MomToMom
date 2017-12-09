@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class DonorInfoDto implements Serializable {
 
     private String donorName;
-    private String donorAdress;
+    private String donorAddress;
     private String donorDeliveryDate;
     private String donorEmail;
     private int donorPhoneNumber;
@@ -19,10 +19,10 @@ public class DonorInfoDto implements Serializable {
     public DonorInfoDto() {
     }
 
-    public DonorInfoDto(String donorName, String donorAdress, String donorDeliveryDate,
+    public DonorInfoDto(String donorName, String donorAddress, String donorDeliveryDate,
                         String donorEmail, int donorPhoneNumber, CheckListDto checkListDto) {
         this.donorName = donorName;
-        this.donorAdress = donorAdress;
+        this.donorAddress = donorAddress;
         this.donorDeliveryDate = donorDeliveryDate;
         this.donorEmail = donorEmail;
         this.donorPhoneNumber = donorPhoneNumber;
@@ -37,12 +37,12 @@ public class DonorInfoDto implements Serializable {
         this.donorName = donorName;
     }
 
-    public String getDonorAdress() {
-        return donorAdress;
+    public String getDonorAddress() {
+        return donorAddress;
     }
 
-    public void setDonorAdress(String donorAdress) {
-        this.donorAdress = donorAdress;
+    public void setDonorAddress(String donorAddress) {
+        this.donorAddress = donorAddress;
     }
 
     public String getDonorDeliveryDate() {
@@ -89,7 +89,7 @@ public class DonorInfoDto implements Serializable {
     public String toString() {
         return "DonorInfoDto{" +
                 "donorName='" + donorName + '\'' +
-                ", donorAdress='" + donorAdress + '\'' +
+                ", donorAddress='" + donorAddress + '\'' +
                 ", donorDeliveryDate='" + donorDeliveryDate + '\'' +
                 ", donorEmail='" + donorEmail + '\'' +
                 ", donorPhoneNumber=" + donorPhoneNumber +
