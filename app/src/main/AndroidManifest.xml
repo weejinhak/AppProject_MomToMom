@@ -58,10 +58,7 @@
             android:name=".FeedingRoomActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddDonorActivitiy"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddBeneficiaryActivity"
+            android:name=".AddDonorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddDonorCheckListActivity"
@@ -74,6 +71,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddDonorAgreeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddDonorImgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

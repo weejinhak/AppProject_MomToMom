@@ -15,11 +15,13 @@ import com.mom.momtomom.DTO.DonorInfoDto;
  * Created by wee on 2017. 11. 20..
  */
 
-public class AddDonorActivitiy extends AppCompatActivity{
+public class AddDonorActivity extends AppCompatActivity{
 
     private DonorInfoDto donorInfoDto;
     private FirebaseAuth mAuth;
     private String uid;
+    private double latitude;
+    private double longitude;
 
 
     @Override
@@ -31,7 +33,10 @@ public class AddDonorActivitiy extends AppCompatActivity{
         mAuth=FirebaseAuth.getInstance();
         uid=mAuth.getCurrentUser().getUid();
 
+        latitude = intent.getExtras().getDouble("latitude");
+        longitude = intent.getExtras().getDouble("longitude");
         final String feedingRoom = intent.getExtras().getString("feedingRoomTitle");
+
         final EditText donorName= findViewById(R.id.addDonor_layout_editText_name);
         final EditText donorAddress= findViewById(R.id.addDonor_layout_editText_residence);
         final EditText donorDeliveryDate= findViewById(R.id.addDonor_layout_editText_calving_date);
@@ -54,6 +59,9 @@ public class AddDonorActivitiy extends AppCompatActivity{
                 Intent intent= new Intent(getApplicationContext(),AddDonorAgreeActivity.class);
                 intent.putExtra("donorInfoDto",donorInfoDto);
                 intent.putExtra("feedingRoomTitle",feedingRoom);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+
                 startActivity(intent);
             }
         });

@@ -14,7 +14,9 @@ public class DonorInfoDto implements Serializable {
     private String donorEmail;
     private int donorPhoneNumber;
     private CheckListDto checkListDto;
+    private AgreeInfoDto agreeInfoDto;
     private String donorUid;
+    private String donorMyInfo;
 
     public DonorInfoDto() {
     }
@@ -85,6 +87,22 @@ public class DonorInfoDto implements Serializable {
         this.checkListDto = checkListDto;
     }
 
+    public String getDonorMyInfo() {
+        return donorMyInfo;
+    }
+
+    public void setDonorMyInfo(String donorMyInfo) {
+        this.donorMyInfo = donorMyInfo;
+    }
+
+    public AgreeInfoDto getAgreeInfoDto() {
+        return agreeInfoDto;
+    }
+
+    public void setAgreeInfoDto(AgreeInfoDto agreeInfoDto) {
+        this.agreeInfoDto = agreeInfoDto;
+    }
+
     @Override
     public String toString() {
         return "DonorInfoDto{" +
@@ -94,7 +112,9 @@ public class DonorInfoDto implements Serializable {
                 ", donorEmail='" + donorEmail + '\'' +
                 ", donorPhoneNumber=" + donorPhoneNumber +
                 ", checkListDto=" + checkListDto +
+                ", agreeInfoDto=" + agreeInfoDto +
                 ", donorUid='" + donorUid + '\'' +
+                ", donorMyInfo='" + donorMyInfo + '\'' +
                 '}';
     }
 }

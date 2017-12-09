@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mom.momtomom.DTO.AgreeInfoDto;
 import com.mom.momtomom.DTO.CheckListDto;
 import com.mom.momtomom.DTO.DonorInfoDto;
 
@@ -22,14 +24,16 @@ import com.mom.momtomom.DTO.DonorInfoDto;
 
 public class AddDonorCheckListActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase mDatabase;
     private int currentIndex = 0;
     private TextView checkListTextView;
     private Button addDonorButton;
+    private CheckBox yesCheckBox;
+    private CheckBox noCheckBox;
+
     private DonorInfoDto donorInfoDto;
     private CheckListDto checkListDto;
-    private String uid;
+    private AgreeInfoDto agreeInfoDto;
+    private String feedingRoomTitle;
 
 
     private int[] checkListText = {
@@ -50,48 +54,68 @@ public class AddDonorCheckListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         donorInfoDto = new DonorInfoDto();
         checkListDto = new CheckListDto();
-
-        mAuth = FirebaseAuth.getInstance();
-        uid = mAuth.getCurrentUser().getUid();
-        mDatabase = FirebaseDatabase.getInstance();
+        agreeInfoDto = new AgreeInfoDto();
 
 
         donorInfoDto = (DonorInfoDto) intent.getSerializableExtra("donorInfoDto");
-        final String feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
+        agreeInfoDto = (AgreeInfoDto) intent.getSerializableExtra("donorAgreeInfo");
+        feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
+        final double latitude = intent.getExtras().getDouble("latitude");
+        final double longitude = intent.getExtras().getDouble("longitude");
 
-        Log.d("DonorCheckList_Log1", String.valueOf(donorInfoDto));
-        Log.d("DonorCheckList_Log2", feedingRoomTitle);
 
         checkListTextView = findViewById(R.id.checkList_layout_textView);
-        final CheckBox noCheckBox = findViewById(R.id.checkList_layout_noCheckBox);
-        final CheckBox yesCheckBox = findViewById(R.id.checkList_layout_yesCheckBox);
+        noCheckBox = findViewById(R.id.checkList_layout_noCheckBox);
+        yesCheckBox = findViewById(R.id.checkList_layout_yesCheckBox);
         Button preButton = findViewById(R.id.checkList_layout_beforeButton);
         Button nextButton = findViewById(R.id.checkList_layout_nextButton);
         addDonorButton = findViewById(R.id.checklist_layout_checkListOk_Button);
         addDonorButton.setVisibility(View.INVISIBLE);
 
+        yesCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    noCheckBox.setChecked(false);
+                    feedPossibleSet();
+                    isCheckBoxCheck(checkListDto, true);
+                }
+            }
+        });
+        noCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    yesCheckBox.setChecked(false);
+                    feedPossibleSet();
+                    isCheckBoxCheck(checkListDto, false);
+                }
+            }
+        });
+
+
+        //다음버튼
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(currentIndex);
                 if (yesCheckBox.isChecked() || noCheckBox.isChecked()) {
                     currentIndex = (currentIndex + 1) % checkListText.length;
                     updateCheckList();
-                    createCheckOkButton(addDonorButton);
                     if (yesCheckBox.isChecked()) {
-                        isCheckBoxCheck(checkListDto, true);
                         noCheckBox.setChecked(false);
+                        createCheckOkButton(addDonorButton);
                     } else if (noCheckBox.isChecked()) {
-                        isCheckBoxCheck(checkListDto, false);
                         yesCheckBox.setChecked(false);
+                        createCheckOkButton(addDonorButton);
                     }
                     yesCheckBox.setChecked(false);
                     noCheckBox.setChecked(false);
                 } else
                     Toast.makeText(getApplicationContext(), "체크를 부탁드려요", Toast.LENGTH_SHORT).show();
-
             }
         });
+
+        //이전버튼
         preButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,42 +126,48 @@ public class AddDonorCheckListActivity extends AppCompatActivity {
                     updateCheckList();
                 } else
                     Toast.makeText(getApplicationContext(), "체크를 부탁드려요", Toast.LENGTH_SHORT).show();
-
             }
         });
 
         //질문바꾸기
         updateCheckList();
 
-        //db넣기 버튼
+        //수유적합여부 판단 및 다음 페이지로 넘어가기 버튼
         addDonorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 donorInfoDto.setCheckListDto(checkListDto);
-                mDatabase.getReference().child("users").child(uid).child("Donor").child(feedingRoomTitle).push().setValue(donorInfoDto);
-                mDatabase.getReference().child("FeedingRoom").child("Donor").child(feedingRoomTitle).push().setValue(donorInfoDto);
-                Intent intent = new Intent(getApplicationContext(),FeedingRoomActivity.class);
-                intent.putExtra("feedingRoomTitle",feedingRoomTitle);
-                startActivity(intent);
-                finish();
+                donorInfoDto.setAgreeInfoDto(agreeInfoDto);
+                if (isFeedPossibleCheck()) {
+                    Toast.makeText(getApplicationContext(), "현재 기증에 적합한 상태입니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), AddDonorImgActivity.class);
+                    intent.putExtra("donorInfoDto", donorInfoDto);
+                    intent.putExtra("feedingRoomTitle", feedingRoomTitle);
+                    intent.putExtra("latitude", latitude);
+                    intent.putExtra("longitude", longitude);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "현재 기증에 적합하지 않은 상태입니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
+    //질문내용바꾸기
     private void updateCheckList() {
         int questionResourceId = checkListText[currentIndex];
         checkListTextView.setText(questionResourceId);
     }
 
+    //적합여부판단버튼생성
     private void createCheckOkButton(Button button) {
         if (currentIndex == 8) {
             button.setVisibility(View.VISIBLE);
         }
     }
 
+    //Dto에 질문 넣기
     private void isCheckBoxCheck(CheckListDto checkListDto, boolean check) {
-        Log.d("isCheckBoxCheck", String.valueOf(checkListDto));
-        Log.d("isCheckBoxCheck", String.valueOf(check));
         if (currentIndex == 0) {
             checkListDto.setQuestion1(check);
         } else if (currentIndex == 1) {
@@ -157,6 +187,17 @@ public class AddDonorCheckListActivity extends AppCompatActivity {
         } else if (currentIndex == 8) {
             checkListDto.setQuestion9(check);
         }
+    }
+
+    //적합여부 가능 배열에 넣기
+    private void feedPossibleSet() {
+        checkList_Yes_or_No[currentIndex] = yesCheckBox.isChecked();
+    }
+
+    //배열의 적합 여부가 맞을시 return true
+    private boolean isFeedPossibleCheck() {
+        return checkList_Yes_or_No[0] && checkList_Yes_or_No[1] && !checkList_Yes_or_No[2] && !checkList_Yes_or_No[3] &&
+                !checkList_Yes_or_No[5] && !checkList_Yes_or_No[6] && checkList_Yes_or_No[7] && checkList_Yes_or_No[8];
     }
 
 }

@@ -31,7 +31,8 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
         donorInfoDto = new DonorInfoDto();
         agreeInfoDto = new AgreeInfoDto();
 
-
+        final double latitude = intent.getExtras().getDouble("latitude");
+        final double longitude = intent.getExtras().getDouble("longitude");
         donorInfoDto = (DonorInfoDto) intent.getSerializableExtra("donorInfoDto");
         final String feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
 
@@ -73,6 +74,8 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
                     intent.putExtra("donorInfoDto", donorInfoDto);
                     intent.putExtra("feedingRoomTitle", feedingRoomTitle);
                     intent.putExtra("donorAgreeInfo", agreeInfoDto);
+                    intent.putExtra("latitude", latitude);
+                    intent.putExtra("longitude", longitude);
                     startActivity(intent);
 
                 } else {

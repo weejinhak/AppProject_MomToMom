@@ -35,7 +35,6 @@ public class SelectActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         //button
-        Button logout_button = findViewById(R.id.select_layout_logout_temporary_button_);
         ImageButton findFeedingRoomButton = findViewById(R.id.select_layout_findFeedingRoom_imgButton);
         ImageButton guiedGoButton= findViewById(R.id.select_layout_guide_imgButton);
         Button myPageGoButton = findViewById(R.id.select_layout_myInfo_button);
@@ -45,15 +44,6 @@ public class SelectActivity extends AppCompatActivity {
         String uid = auth.getCurrentUser().getUid();
 
         //clickEvent
-        logout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.signOut();
-                finish();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
         findFeedingRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override

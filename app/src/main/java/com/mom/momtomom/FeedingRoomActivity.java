@@ -42,6 +42,8 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
     private ListView donorListView;
     private String donorUid;
     private FirebaseDatabase mDatabase;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,13 +60,15 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
 
         //get Intent
         Intent intent = getIntent();
-        double latitude = intent.getExtras().getDouble("latitude");
-        double longitude = intent.getExtras().getDouble("longitude");
+        latitude = intent.getExtras().getDouble("latitude");
+        longitude = intent.getExtras().getDouble("longitude");
         feedingRoomTitle = intent.getExtras().getString("feedingRoomTitle");
 
         //get ID
         TextView feedRoomTitle = findViewById(R.id.feedingRoom_layout_textView_feedingRoomName);
-        Button add_Donor_Beneficiary_Button = findViewById(R.id.feedingRoom_layout_Button_donorAdd_Button);
+        Button add_Donor_Button = findViewById(R.id.feedingRoom_layout_Button_donorAdd_Button);
+        Button roadSearch_Button = findViewById(R.id.feedingRoom_layout_Button_roadSearch_Button);
+
         donorListView = findViewById(R.id.donor_layout_donor_listView);
         feedRoomTitle.setText(feedingRoomTitle);
 
@@ -79,16 +83,25 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
             }
         });
 
-        add_Donor_Beneficiary_Button.setOnClickListener(new View.OnClickListener() {
+        add_Donor_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddDonorActivitiy.class);
+                Intent intent = new Intent(getApplicationContext(), AddDonorActivity.class);
                 intent.putExtra("feedingRoomTitle", feedingRoomTitle);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
                 startActivity(intent);
                 finish();
             }
         });
-
+        roadSearch_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -105,7 +118,6 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         for (DataSnapshot fileSnapshot : dataSnapshot.child("FeedingRoom").child("Donor").child(feedingRoomTitle).getChildren()) {
             DonorInfoDto donorInfoDto = fileSnapshot.getValue(DonorInfoDto.class);
             donorInfoLists.add(donorInfoDto);
-            Log.d("feedingRoomDonor", String.valueOf(donorInfoDto));
         }
 
         //List Adapter
@@ -119,13 +131,18 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
                 false).setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mDatabase.getReference().child("users").child(donorUid).child("receive").push().setValue(beneficiaryInfoDto);
-                        mDatabase.getReference().child("users").child(getUid()).child("request").push().setValue(feedingRoomTitle);
-                        Toast.makeText(getApplicationContext(), "요청 완료", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
-                        startActivity(intent);
-                        finish();
-                        dialog.cancel();
+                        if (getUid().equals(donorUid)) {
+                            Toast.makeText(getApplicationContext(), "본인에게는 요청 불가합니다.", Toast.LENGTH_SHORT).show();
+                            dialog.cancel();
+                        } else {
+                            mDatabase.getReference().child("users").child(donorUid).child("receive").push().setValue(beneficiaryInfoDto);
+                            mDatabase.getReference().child("users").child(getUid()).child("request").push().setValue(feedingRoomTitle);
+                            Toast.makeText(getApplicationContext(), "요청 완료", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                            startActivity(intent);
+                            finish();
+                            dialog.cancel();
+                        }
                     }
                 }).setNegativeButton("No",
                 new DialogInterface.OnClickListener() {

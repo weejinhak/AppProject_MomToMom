@@ -1,10 +1,12 @@
 package com.mom.momtomom.DTO;
 
+import java.io.Serializable;
+
 /**
  * Created by wee on 2017. 11. 21..
  */
 
-public class CheckListDto {
+public class CheckListDto implements Serializable {
 
     private boolean question1;
     private boolean question2;
@@ -103,5 +105,20 @@ public class CheckListDto {
 
     public void setQuestion9(boolean question9) {
         this.question9 = question9;
+    }
+
+    @Override
+    public String toString() {
+        return "CheckListDto{" +
+                "question1=" + question1 +
+                ", question2=" + question2 +
+                ", question3=" + question3 +
+                ", question4=" + question4 +
+                ", question5=" + question5 +
+                ", question6=" + question6 +
+                ", question7=" + question7 +
+                ", question8=" + question8 +
+                ", question9=" + question9 +
+                '}';
     }
 }

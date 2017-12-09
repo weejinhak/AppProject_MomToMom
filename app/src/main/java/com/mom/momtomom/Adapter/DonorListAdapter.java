@@ -61,11 +61,9 @@ public class DonorListAdapter extends BaseAdapter {
 
         ImageView imageView = convertView.findViewById(R.id.list_donor_img);
         imageView.setImageResource(R.drawable.donor_item_donor_img);
-        imageView.setFocusable(false);
 
         TextView donorName = convertView.findViewById(R.id.list_donor_name);
         donorName.setText(donorInfoItem.getDonorName());
-        donorName.setFocusable(false);
 
         String date = donorInfoItem.getDonorDeliveryDate();
         String[] dateToken = date.split("/");
@@ -73,7 +71,6 @@ public class DonorListAdapter extends BaseAdapter {
 
         TextView donorDelivery = convertView.findViewById(R.id.list_donor_date);
         donorDelivery.setText(deliveryDate);
-        donorDelivery.setFocusable(false);
 
         if (!donorInfoItem.getCheckListDto().isQuestion2()) {
             TextView donorCertificate = convertView.findViewById(R.id.list_donor_certificate);
@@ -85,6 +82,7 @@ public class DonorListAdapter extends BaseAdapter {
 
         ImageView requestImageView = convertView.findViewById(R.id.list_donor_request_img);
         requestImageView.setImageResource(R.drawable.donor_item_finger_img);
+
         return convertView;
     }
 }
