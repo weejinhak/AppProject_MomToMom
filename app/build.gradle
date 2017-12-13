@@ -39,6 +39,10 @@ dependencies {
     //excel
     compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.12'
 
+    //faceBook Login
+    compile 'com.facebook.android:facebook-login:[4,5)'
+
+
 }
 allprojects {
     repositories {

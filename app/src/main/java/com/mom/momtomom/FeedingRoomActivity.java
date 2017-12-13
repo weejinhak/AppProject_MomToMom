@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mom.momtomom.Adapter.BackPressCloseHandler;
 import com.mom.momtomom.Adapter.DonorListAdapter;
+import com.mom.momtomom.DTO.AgreeInfoDto;
 import com.mom.momtomom.DTO.BeneficiaryInfoDto;
 import com.mom.momtomom.DTO.DonorInfoDto;
 
@@ -41,7 +42,7 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
     private DonorListAdapter donorListAdapter;
     private ListView donorListView;
     private String donorUid;
-    private FirebaseDatabase mDatabase;
+    private DonorInfoDto donorInfoDto;
     private double latitude;
     private double longitude;
 
@@ -50,8 +51,6 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeding_room);
 
-        //firebase
-        mDatabase = FirebaseDatabase.getInstance();
 
         //create Object
         backPressCloseHandler = new BackPressCloseHandler(this);
@@ -65,12 +64,15 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         feedingRoomTitle = intent.getExtras().getString("feedingRoomTitle");
 
         //get ID
-        TextView feedRoomTitle = findViewById(R.id.feedingRoom_layout_textView_feedingRoomName);
+        final TextView feedRoomTitle = findViewById(R.id.feedingRoom_layout_textView_feedingRoomName);
+        final TextView feedRoomAddress=findViewById(R.id.feedingRoom_layout_textView_feedingRoomAddress);
+
         Button add_Donor_Button = findViewById(R.id.feedingRoom_layout_Button_donorAdd_Button);
         Button roadSearch_Button = findViewById(R.id.feedingRoom_layout_Button_roadSearch_Button);
 
         donorListView = findViewById(R.id.donor_layout_donor_listView);
         feedRoomTitle.setText(feedingRoomTitle);
+        feedRoomAddress.setText(feedingRoomTitle);
 
         System.out.println(donorInfoLists.size());
 
@@ -79,7 +81,16 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("DonorUid", donorInfoLists.get(position).getDonorUid());
                 donorUid = donorInfoLists.get(position).getDonorUid();
-                showDialog(donorUid);
+                donorInfoDto = donorInfoLists.get(position);
+
+                Intent intent = new Intent(getApplicationContext(), ViewDonorActivity.class);
+                intent.putExtra("donorUid", donorUid);
+                intent.putExtra("donorInfoDto", donorInfoDto);
+                intent.putExtra("feedingRoomTitle", feedingRoomTitle);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
+                startActivity(intent);
+
             }
         });
 
@@ -123,40 +134,6 @@ public class FeedingRoomActivity extends AppCompatActivity implements ValueEvent
         //List Adapter
         donorListAdapter = new DonorListAdapter(this, R.layout.activity_feeding_room_item, donorInfoLists);
         donorListView.setAdapter(donorListAdapter);
-    }
-
-    private void showDialog(final String donorUid) {
-        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
-        alt_bld.setMessage("기부자에게 수혜 요청을 하시겠습니까?").setCancelable(
-                false).setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (getUid().equals(donorUid)) {
-                            Toast.makeText(getApplicationContext(), "본인에게는 요청 불가합니다.", Toast.LENGTH_SHORT).show();
-                            dialog.cancel();
-                        } else {
-                            mDatabase.getReference().child("users").child(donorUid).child("receive").push().setValue(beneficiaryInfoDto);
-                            mDatabase.getReference().child("users").child(getUid()).child("request").push().setValue(feedingRoomTitle);
-                            Toast.makeText(getApplicationContext(), "요청 완료", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
-                            startActivity(intent);
-                            finish();
-                            dialog.cancel();
-                        }
-                    }
-                }).setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Action for 'NO' Button
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = alt_bld.create();
-        // Title for AlertDialog
-        alert.setTitle("요청보내기");
-        // Icon for AlertDialog
-        alert.setIcon(R.drawable.login_layout_logo_img);
-        alert.show();
     }
 
 

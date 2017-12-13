@@ -55,16 +55,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_beneficiary_layout_textView_title3"
-        app:srcCompat="@drawable/add_donor_introduce" />
+        app:srcCompat="@drawable/donor_item_donor_img" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/view_beneficiary_layout_textView_DonorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="기증자"
+        android:textColor="@color/textBlackColor"
         app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -74,9 +75,11 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-        app:srcCompat="@android:drawable/star_on"
-        tools:layout_editor_absoluteX="318dp" />
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/view_beneficiary_layout_textView_DonorName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/star_on" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -85,13 +88,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:background="@drawable/baby_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/view_beneficiary_layout_textView_DonorName"
         app:srcCompat="@drawable/join_edittext_border" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/view_Donor_layout_donorSelfInfo_textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -99,6 +103,7 @@
         android:layout_marginTop="13dp"
         android:padding="4dp"
         android:text="TextView"
+        android:textColor="@color/textBlackColor"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -111,8 +116,8 @@
         android:padding="4dp"
         android:text="출산일"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintStart_toStartOf="@+id/view_Donor_layout_donorSelfInfo_textView"
+        app:layout_constraintTop_toBottomOf="@+id/view_Donor_layout_donorSelfInfo_textView" />
 
     <TextView
         android:id="@+id/textView11"
@@ -137,37 +142,40 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/view_Donor_layout_deliveryDate_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
+        android:textColor="@color/textBlackColor"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/view_Donor_layout_birthReport_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
+        android:textColor="@color/textBlackColor"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/view_Donor_layout_bloodReport_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
+        android:textColor="@color/textBlackColor"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/view_Donor_layout_DonorAdd_Button"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

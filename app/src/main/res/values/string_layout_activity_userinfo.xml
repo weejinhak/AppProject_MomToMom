@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="userNickName">닉네임</string>
+        <string name="userNickName">닉네임을 입력하세요.</string>
         <string name="basicInfo">기본정보</string>
-        <string name="essentialName">이름(필수)</string>
-        <string name="essentialAge">나이(필수)</string>
+        <string name="essentialName">성명을 입력하세요.</string>
+        <string name="essentialAge">나이를 입력하세요.</string>
         <string name="basicInfoOk">완료</string>
-        <string name="userPhoneNumber">전화번호(필수)</string>
+        <string name="userPhoneNumber">연락처를 입력하세요.</string>
 </resources>

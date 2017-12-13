@@ -5,5 +5,7 @@
     <string name="feedigRoom_title_text">수유실 정보</string>
     <string name="feedigRoom_name_text">수유실 이름</string>
     <string name="Road_Search_Button_text">길찾기</string>
+
+    <string name="dialog_hint_text">간단하게 쪽지를 남겨보세요.</string>
     
 </resources>

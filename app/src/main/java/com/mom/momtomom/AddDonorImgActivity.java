@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,8 @@ public class AddDonorImgActivity extends AppCompatActivity {
         donorInfoDto = (DonorInfoDto) intent.getSerializableExtra("donorInfoDto");
         feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
         uid = mAuth.getCurrentUser().getUid();
+
+        Log.d("dto", String.valueOf(donorInfoDto));
 
         //get Id
         final EditText myInfoEditText = findViewById(R.id.add_donor_img_layout_editText_myInfo);

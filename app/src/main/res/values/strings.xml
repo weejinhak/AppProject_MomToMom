@@ -11,4 +11,9 @@
     <string name="find_guideBook_text">가이드북</string>
 
 
+    <!--faceBook App Id-->
+    <string name="facebook_app_id">698553797010240</string>
+    <string name="fb_login_protocol_scheme">fb698553797010240</string>
+
+
 </resources>

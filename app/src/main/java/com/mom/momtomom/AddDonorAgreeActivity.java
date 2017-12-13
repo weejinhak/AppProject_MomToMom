@@ -2,13 +2,18 @@ package com.mom.momtomom;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import com.mom.momtomom.DTO.AgreeInfoDto;
 import com.mom.momtomom.DTO.DonorInfoDto;
@@ -21,6 +26,7 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
 
     private DonorInfoDto donorInfoDto;
     private AgreeInfoDto agreeInfoDto;
+    private String feedingRoomTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +40,8 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
         final double latitude = intent.getExtras().getDouble("latitude");
         final double longitude = intent.getExtras().getDouble("longitude");
         donorInfoDto = (DonorInfoDto) intent.getSerializableExtra("donorInfoDto");
-        final String feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
+        Log.d("dto", String.valueOf(donorInfoDto));
+        feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
 
         //get Id
         TextView nameTextView = findViewById(R.id.addDonor_layout_textView_name);
@@ -76,6 +83,7 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
                     intent.putExtra("donorAgreeInfo", agreeInfoDto);
                     intent.putExtra("latitude", latitude);
                     intent.putExtra("longitude", longitude);
+                    Log.d("dto", String.valueOf(donorInfoDto));
                     startActivity(intent);
 
                 } else {
@@ -86,4 +94,6 @@ public class AddDonorAgreeActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

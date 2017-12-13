@@ -1,11 +1,19 @@
 package com.mom.momtomom;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,11 +51,20 @@ public class MyPageActivity extends AppCompatActivity implements ValueEventListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         backPressCloseHandler = new BackPressCloseHandler(this);
-        feedingRoomArrayList= new ArrayList<>();
-        beneficiaryInfoDtos= new ArrayList<>();
+        feedingRoomArrayList = new ArrayList<>();
+        beneficiaryInfoDtos = new ArrayList<>();
 
         receiveListView = findViewById(R.id.myPage_layout_receive_ListView);
         requestListView = findViewById(R.id.myPage_layout_request_ListView);
+
+
+        receiveListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String message = beneficiaryInfoDtos.get(position).getBeneficiaryMessage();
+                showDialog(message);
+            }
+        });
 
 
     }
@@ -69,10 +86,32 @@ public class MyPageActivity extends AppCompatActivity implements ValueEventListe
             Log.d("feedingRoombeneficialry", String.valueOf(beneficiaryInfoDto));
         }
         //List Adapter
-        receiveListAdapter= new ReceiveListAdapter(this,R.layout.activity_my_page_item_receive,beneficiaryInfoDtos);
-        requestListAdapter= new RequestListAdapter(this,R.layout.activity_my_page_item_request,feedingRoomArrayList);
+        receiveListAdapter = new ReceiveListAdapter(this, R.layout.activity_my_page_item_receive, beneficiaryInfoDtos);
+        requestListAdapter = new RequestListAdapter(this, R.layout.activity_my_page_item_request, feedingRoomArrayList);
         receiveListView.setAdapter(receiveListAdapter);
         requestListView.setAdapter(requestListAdapter);
+    }
+
+    private void showDialog(final String message) {
+        AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+        final TextView textView = new TextView(this);
+
+        alt_bld.setView(textView);
+        textView.setText(message);
+
+        alt_bld.setMessage("수혜자에게 온 요청 쪽지 입니다.").setCancelable(
+                false).setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = alt_bld.create();
+        // Title for AlertDialog
+        alert.setTitle("쪽지가 왔어요");
+        // Icon for AlertDialog
+        alert.setIcon(R.drawable.login_layout_logo_img);
+        alert.show();
     }
 
     @Override

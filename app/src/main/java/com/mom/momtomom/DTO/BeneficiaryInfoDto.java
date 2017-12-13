@@ -7,6 +7,7 @@ package com.mom.momtomom.DTO;
 public class BeneficiaryInfoDto {
     private String beneficiaryName;
     private String beneficiaryPhoneNumber;
+    private String beneficiaryMessage;
 
     public BeneficiaryInfoDto() {
     }
@@ -32,11 +33,20 @@ public class BeneficiaryInfoDto {
         this.beneficiaryPhoneNumber = beneficiaryPhoneNumber;
     }
 
+    public String getBeneficiaryMessage() {
+        return beneficiaryMessage;
+    }
+
+    public void setBeneficiaryMessage(String beneficiaryMessage) {
+        this.beneficiaryMessage = beneficiaryMessage;
+    }
+
     @Override
     public String toString() {
         return "BeneficiaryInfoDto{" +
                 "beneficiaryName='" + beneficiaryName + '\'' +
                 ", beneficiaryPhoneNumber='" + beneficiaryPhoneNumber + '\'' +
+                ", beneficiaryMessage='" + beneficiaryMessage + '\'' +
                 '}';
     }
 }

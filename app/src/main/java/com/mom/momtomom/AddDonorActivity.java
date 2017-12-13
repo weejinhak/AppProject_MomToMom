@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,13 +56,13 @@ public class AddDonorActivity extends AppCompatActivity{
                 donorInfoDto.setDonorEmail(donorEmail.getText().toString());
                 donorInfoDto.setDonorPhoneNumber(Integer.parseInt(donorPhoneNumber.getText().toString()));
                 donorInfoDto.setDonorUid(uid);
+                Log.d("dto", String.valueOf(donorInfoDto));
 
                 Intent intent= new Intent(getApplicationContext(),AddDonorAgreeActivity.class);
                 intent.putExtra("donorInfoDto",donorInfoDto);
                 intent.putExtra("feedingRoomTitle",feedingRoom);
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
-
                 startActivity(intent);
             }
         });

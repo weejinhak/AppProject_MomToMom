@@ -59,6 +59,7 @@ public class AddDonorCheckListActivity extends AppCompatActivity {
 
         donorInfoDto = (DonorInfoDto) intent.getSerializableExtra("donorInfoDto");
         agreeInfoDto = (AgreeInfoDto) intent.getSerializableExtra("donorAgreeInfo");
+        Log.d("dto", String.valueOf(donorInfoDto));
         feedingRoomTitle = intent.getStringExtra("feedingRoomTitle");
         final double latitude = intent.getExtras().getDouble("latitude");
         final double longitude = intent.getExtras().getDouble("longitude");

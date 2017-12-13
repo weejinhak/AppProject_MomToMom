@@ -134,6 +134,7 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="13sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/emailJoin_layout_text_name"
         app:layout_constraintEnd_toEndOf="@+id/emailJoin_layout_text_name"
         app:layout_constraintTop_toTopOf="@+id/emailJoin_layout_text_name" />
