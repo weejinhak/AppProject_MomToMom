@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,10 +63,15 @@ public class UserInfoActivity extends AppCompatActivity {
         final EditText editName = findViewById(R.id.userinfo_layout_text_name);
         final EditText editAge = findViewById(R.id.userinfo_layout_text_age);
         final EditText editPhoneNumber= findViewById(R.id.userinfo_layout_text_phoneNumber);
+        final TextView userEmailTextView=findViewById(R.id.userInfo_layout_textView_userEmail);
+
 
         userInfoDto = new UserInfoDto();
         uid = auth.getCurrentUser().getUid();
         email = auth.getCurrentUser().getEmail();
+
+        userEmailTextView.setText(email);
+
 
         userInfoOk_button.setOnClickListener(new View.OnClickListener() {
             @Override
