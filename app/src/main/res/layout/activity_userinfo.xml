@@ -98,7 +98,7 @@
         android:background="@drawable/join_edittext_border"
         android:ems="10"
         android:hint="@string/essentialAge"
-        android:inputType="text"
+        android:inputType="number"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/userinfo_layout_text_name"
         app:layout_constraintHorizontal_bias="1.0"

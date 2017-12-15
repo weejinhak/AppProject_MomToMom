@@ -63,11 +63,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="성명"
+        android:textColor="@color/textBlackColor"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="@color/textBlackColor"
         app:layout_constraintBottom_toTopOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toTopOf="@+id/view2"
@@ -177,33 +177,34 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/addAgree_layout_agreeInfo"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="200dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/addAgree_layout_agree1"
-        android:textStyle="bold"
         android:textColor="@color/textBlackColor"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
 
     <TextView
         android:id="@+id/textView28"
-        android:layout_width="200dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/addAgree_layout_agree2"
-        android:textStyle="bold"
         android:textColor="@color/textBlackColor"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -221,12 +222,12 @@
 
     <TextView
         android:id="@+id/textView30"
-        android:layout_width="200dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/addAgree_layout_agree3"
-        android:textStyle="bold"
         android:textColor="@color/textBlackColor"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -262,13 +263,13 @@
         android:id="@+id/add_donor_agree_layout_nextButton"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/mtm_button"
         android:text="계속하기"
         android:textColor="@color/titleTextColor"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2" />
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -24,7 +24,7 @@
         android:id="@+id/select_layout_findFeedingRoom_imgButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:background="#EB6A6A"
         app:layout_constraintEnd_toStartOf="@+id/select_layout_guide_imgButton"
         app:layout_constraintStart_toStartOf="parent"

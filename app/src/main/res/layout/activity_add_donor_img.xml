@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_donor_layout_layout_my_toolbar2" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/add_donor_profile_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
@@ -63,9 +63,9 @@
         android:layout_marginStart="8dp"
         android:text="※이미지를 터치하여 사진을 등록해주세요."
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintBottom_toBottomOf="@+id/add_donor_profile_image_view"
+        app:layout_constraintStart_toEndOf="@+id/add_donor_profile_image_view"
+        app:layout_constraintTop_toTopOf="@+id/add_donor_profile_image_view" />
 
     <EditText
         android:id="@+id/add_donor_img_layout_editText_myInfo"
@@ -73,7 +73,7 @@
         android:layout_height="200dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/add_donor_introduce"
         android:ems="10"
         android:gravity="top"
@@ -82,7 +82,7 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/add_donor_profile_image_view" />
 
     <Button
         android:id="@+id/add_donor_imgLayout_final_addButton"
